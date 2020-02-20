@@ -1,8 +1,6 @@
 # COMPILADOR 💻📝💻 
 Mira **Parte 1** para conocer los requisitos.
 ## LENGUAJES Y AUTOMÁTAS II
-### Angulo Quiñónez Kelly Anahí 🐢
-
 ### Parte 1 🔧: 
 *Gramática*:
 ```
