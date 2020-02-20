@@ -20,10 +20,20 @@ public class Token {
     private String valor;
 
     //Clasificación de los valores que entrarán
-    enum Tipos {
-        reservada ("[if|then|else|begin|end|print]"),
-        semicolon("[;]"),
-        numero("[0-9]+");
+    public enum Tipos {
+        //Palabras reservadas del lenguaje
+        IF ("^if$"),
+        THEN("^then$"),
+        ELSE("^else$"),
+        BEGIN("^begin$"),
+        END("^end$"),
+        PRINT("^print$"),
+        EQU("^=$"),
+        semi("^[;]$"), //Semicolon
+        num("^[+]?([0-9])+$"); //Solo se aceptan números positivos enteros
+
+
+
 
         public final String patron;
         Tipos(String s) {

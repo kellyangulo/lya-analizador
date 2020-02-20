@@ -1,2 +1,2 @@
-Hola xd te amo manuel
-eres    el mejor
+if then
+begin
