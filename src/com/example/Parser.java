@@ -8,6 +8,7 @@ public class Parser {
     ArrayList<Token> tokens;
     int tokenActual;
     Token tok;
+    boolean error;
 
     public Parser(ArrayList<Token> tokens){
         this.tokens = tokens;
@@ -16,8 +17,12 @@ public class Parser {
     }
 
     public void advance(){
-        this.tokenActual ++;
-        this.tok = this.tokens.get(this.tokenActual);
+        if (this.tokens.size()-1 > this.tokenActual){
+            this.tokenActual ++;
+            this.tok = this.tokens.get(this.tokenActual);
+        }else{
+            this.tokenActual = -1;
+        }
     }
 
     public void eat(Tipos t){
@@ -28,6 +33,9 @@ public class Parser {
     }
 
     public void S(){
+        if (tokenActual == -1){
+            return;
+        }
         switch (this.tok.getTipo()){
             case IF:
                 eat(Tipos.IF);
@@ -52,6 +60,9 @@ public class Parser {
     }
 
     public void L(){
+        if (tokenActual == -1){
+            return;
+        }
         switch (this.tok.getTipo()){
             case END:
                 eat(Tipos.END);
@@ -67,6 +78,9 @@ public class Parser {
     }
 
     public void E(){
+        if (tokenActual == -1){
+            return;
+        }
         eat(Tipos.num);
         eat(Tipos.EQU);
         eat(Tipos.num);
@@ -74,5 +88,9 @@ public class Parser {
 
     public void error(){
         System.out.println("Error");
+        System.out.println(this.tok.getTipo());
+        System.out.println(this.tokenActual);
+        error = true;
+
     }
 }

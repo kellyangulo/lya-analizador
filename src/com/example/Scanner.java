@@ -11,6 +11,21 @@ import java.util.regex.Pattern;
 
 public class Scanner {
 
+
+    public static void main (String[] args) throws IOException {
+
+        ArrayList<String> lineas = Scanner("archivo.txt");
+        //String input;
+        ArrayList<Token> tokens = lex(lineas);
+        Parser parser = new Parser(tokens);
+        parser.S();
+        if(parser.error){
+            System.out.println("Error: cadena incorrecta");
+        }else{
+            System.out.println("La cadena es correcta");
+        }
+    }
+
     public static ArrayList <String> Scanner (String archivo) throws FileNotFoundException, IOException {
         String cadena;
         ArrayList <String> lista = new ArrayList<>();
@@ -25,18 +40,6 @@ public class Scanner {
         return lista;
     }
 
-
-    public static void main (String[] args) throws IOException {
-
-        ArrayList<String> lineas = Scanner("archivo.txt");
-        //String input;
-        ArrayList<Token> tokens = lex(lineas);
-            for(Token token : tokens){
-                System.out.println("(" + token.getTipo() + ": " + token.getValor() + ")");
-            }
-
-
-    }
 
     private static ArrayList<Token> lex (ArrayList<String> lineas){
         final ArrayList<Token> tokens = new ArrayList<Token>();

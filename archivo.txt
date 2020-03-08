@@ -1,2 +1,1 @@
-if then
-begin
+if 8 = 8 then print 8 = 8 else print 9 = 9
