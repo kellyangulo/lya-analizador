@@ -87,10 +87,11 @@ public class Parser {
     }
 
     public void error(){
-        System.out.println("Error");
-        System.out.println(this.tok.getTipo());
-        System.out.println(this.tokenActual);
+//        System.out.println("Error");
+//        System.out.println(this.tok.getTipo());
+//        System.out.println(this.tokenActual);
         error = true;
+        throw new RuntimeException("Cadena invalida");
 
     }
 }

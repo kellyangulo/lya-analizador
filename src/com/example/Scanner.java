@@ -14,15 +14,17 @@ public class Scanner {
 
     public static void main (String[] args) throws IOException {
 
-        ArrayList<String> lineas = Scanner("archivo.txt");
+        ArrayList<String> lineas = Scanner("Prueba2.txt");
         //String input;
         ArrayList<Token> tokens = lex(lineas);
         Parser parser = new Parser(tokens);
-        parser.S();
+        while(parser.tokenActual!=-1){
+            parser.S();
+        }
         if(parser.error){
             System.out.println("Error: cadena incorrecta");
         }else{
-            System.out.println("La cadena es correcta");
+            System.out.println("Los tokens son correctos");
         }
     }
 
