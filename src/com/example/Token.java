@@ -32,11 +32,8 @@ public class Token {
         semi("^[;]$"), //Semicolon
         num("^[+]?([0-9])+$"); //Solo se aceptan números positivos enteros
 
-
-
-
         public final String patron;
-        Tipos(String s) {
+        Tipos(String s){
             this.patron = s;
         }
     }

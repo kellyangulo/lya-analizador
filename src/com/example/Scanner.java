@@ -14,7 +14,7 @@ public class Scanner {
 
     public static void main (String[] args) throws IOException {
 
-        ArrayList<String> lineas = Scanner("Prueba2.txt");
+        ArrayList<String> lineas = Scanner("Prueba3.txt");
         //String input;
         ArrayList<Token> tokens = lex(lineas);
         Parser parser = new Parser(tokens);
