@@ -1,1 +1,14 @@
 int v1 ;
+
+if 8 = 8 then
+    print v1 = v1
+else
+    begin
+        print 8 = 8 ;
+        if 135 = 135 then
+            begin
+                print 1 = 1
+            end
+        else
+            print 3 = 3
+    end

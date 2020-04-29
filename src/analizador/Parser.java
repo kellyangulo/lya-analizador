@@ -41,9 +41,9 @@ public class Parser {
         while(this.tok.getTipo() == Tipos.INT || this.tok.getTipo() == Tipos.FLOAT){
             dec.add(D()); // Se guardan las declaraciones :(
         }
-        //while(this.tok.getTipo() == Tipos.IF || this.tok.getTipo() == Tipos.BEGIN || this.tok.getTipo() == Tipos.PRINT){
-            //stat.add(S()); // Se guardan los estatus xd
-        //}
+        while(this.tok.getTipo() == Tipos.IF || this.tok.getTipo() == Tipos.BEGIN || this.tok.getTipo() == Tipos.PRINT){
+            stat.add(S()); // Se guardan los estatus xd
+        }
         return new Programa(dec,stat);
     }
 
@@ -135,19 +135,21 @@ public class Parser {
         }
         switch (this.tok.getTipo()){
             case num:
+                n1 = new Numx (this.tok.getValor());
                 eat(Tipos.num);
-                n1 = new Numx(this.tok.getValor());
                 eat(Tipos.EQU);
-                eat(Tipos.num);
                 n2 = new Numx(this.tok.getValor());
+                eat(Tipos.num);
                 e = new ComparaNum(n1, n2);
+                break;
             case id:
-                eat(Tipos.id);
                 i1 = new Idx(this.tok.getValor());
-                eat(Tipos.EQU);
                 eat(Tipos.id);
+                eat(Tipos.EQU);
                 i2 = new Idx(this.tok.getValor());
+                eat(Tipos.id);
                 e = new ComparaId(i1, i2);
+                break;
             default:
                 error();
         }
