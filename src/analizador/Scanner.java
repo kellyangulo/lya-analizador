@@ -1,10 +1,9 @@
-package com.example;
+package analizador;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Stack;
 import java.util.StringTokenizer;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -19,7 +18,7 @@ public class Scanner {
         ArrayList<Token> tokens = lex(lineas);
         Parser parser = new Parser(tokens);
         while(parser.tokenActual!=-1){
-            parser.S();
+            parser.P();
         }
         if(parser.error){
             System.out.println("Error: cadena incorrecta");
@@ -31,7 +30,7 @@ public class Scanner {
     public static ArrayList <String> Scanner (String archivo) throws FileNotFoundException, IOException {
         String cadena;
         ArrayList <String> lista = new ArrayList<>();
-        StringTokenizer st; //Clase que separa los tokens
+        //StringTokenizer st; //Clase que separa los tokens
 
         FileReader f = new FileReader(archivo);
         BufferedReader b = new BufferedReader(f);

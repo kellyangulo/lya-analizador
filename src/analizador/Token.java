@@ -1,4 +1,4 @@
-package com.example;
+package analizador;
 
 public class Token {
 
@@ -9,7 +9,7 @@ public class Token {
     public void setTipo(Tipos tipo){
         this.tipo = tipo;
     }
-    public String getValor(){
+    public  String getValor(){
         return valor;
     }
     public void setValor(String valor) {
@@ -29,13 +29,15 @@ public class Token {
         END("^end$"),
         PRINT("^print$"),
         EQU("^=$"),
-        semi("^[;]$"), //Semicolon
-        num("^[+]?([0-9])+$"); //Solo se aceptan números positivos enteros
-
-
+        semi("^;$"), //Semicolon
+        INT("^int$"),
+        FLOAT("^float$"),
+        num("^[+]?([0-9]+([.][0-9]*)?|[.][0-9])+$"), //Acepta números enteros y decimales
+        id("^[a-zA-Z0-9]+$");
 
 
         public final String patron;
+
         Tipos(String s) {
             this.patron = s;
         }
