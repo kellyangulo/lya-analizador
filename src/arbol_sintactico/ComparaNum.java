@@ -1,8 +1,8 @@
 package arbol_sintactico;
 
 public class ComparaNum implements Ex {
-    Ex e1;
-    Ex e2;
+    public Ex e1;
+    public Ex e2;
 
     public ComparaNum(Ex e1, Ex e2){
         this.e1 = e1;

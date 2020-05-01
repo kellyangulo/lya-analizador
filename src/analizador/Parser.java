@@ -41,15 +41,16 @@ public class Parser {
         while(this.tok.getTipo() == Tipos.INT || this.tok.getTipo() == Tipos.FLOAT){
             dec.add(D()); // Se guardan las declaraciones :(
         }
-        //while(this.tok.getTipo() == Tipos.IF || this.tok.getTipo() == Tipos.BEGIN || this.tok.getTipo() == Tipos.PRINT){
-            //stat.add(S()); // Se guardan los estatus xd
-        //}
+        while(this.tok.getTipo() == Tipos.IF || this.tok.getTipo() == Tipos.BEGIN || this.tok.getTipo() == Tipos.PRINT){
+            stat.add(S()); // Se guardan los estatus xd
+        }
         return new Programa(dec,stat);
     }
 
 
     public Dx D(){
         Dx d;
+        Numx n;
         if (tokenActual == -1){
             return null;
         }
@@ -57,7 +58,10 @@ public class Parser {
             case INT:
                 eat(Tipos.INT);
                 eat(Tipos.id);
-                d = new Dx("int", this.tok.getValor());
+                d = new Dx("int", this.tok.getValor(), new Numx("0"));
+                eat(Tipos.EQU);
+                eat(Tipos.num);
+                d.setValor(this.tok.getValor());
                 eat(Tipos.semi);
                 //D();
                 return d;
@@ -65,7 +69,10 @@ public class Parser {
             case FLOAT:
                 eat(Tipos.FLOAT);
                 eat(Tipos.id);
-                d = new Dx("float", this.tok.getValor());
+                d = new Dx("float", this.tok.getValor(), new Numx("0"));
+                eat(Tipos.EQU);
+                eat(Tipos.num);
+                d.setValor(this.tok.getValor());
                 eat(Tipos.semi);
                 //D();
                 return  d;
@@ -141,6 +148,7 @@ public class Parser {
                 eat(Tipos.num);
                 n2 = new Numx(this.tok.getValor());
                 e = new ComparaNum(n1, n2);
+                break;
             case id:
                 eat(Tipos.id);
                 i1 = new Idx(this.tok.getValor());
@@ -148,6 +156,7 @@ public class Parser {
                 eat(Tipos.id);
                 i2 = new Idx(this.tok.getValor());
                 e = new ComparaId(i1, i2);
+                break;
             default:
                 error();
         }

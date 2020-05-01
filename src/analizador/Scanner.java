@@ -59,6 +59,7 @@ public class Scanner {
                         tk.setValor(palabra);
                         tokens.add(tk);
                         matched = true;
+                        break;
                     }
                 }
 

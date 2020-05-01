@@ -1,9 +1,9 @@
 package arbol_sintactico;
 
 public class Ifx implements Sx {
-    Ex e;
-    Sx s1;
-    Sx s2;
+    public Ex e;
+    public Sx s1;
+    public Sx s2;
 
     public Ifx(Ex e, Sx s1, Sx s2){
         this.e = e;

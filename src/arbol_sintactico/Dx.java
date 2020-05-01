@@ -3,13 +3,20 @@ package arbol_sintactico;
 import analizador.Token;
 
 public class Dx {
-    String t; //tipo
-    String  id;
+    public String t; //tipo
+    public String  id;
+    public Numx valor;
+
+    public void setValor(String valor){
+        this.valor.num1 = valor;
+    }
+
+
 
     //Constructor
-    public Dx(String t, String id){
+    public Dx(String t, String id, Numx valor){
         t = t;
         id = id;
-        //this.valor = valor; AUN NO
+        this.valor = valor;
     }
 }
