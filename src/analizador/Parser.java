@@ -142,19 +142,19 @@ public class Parser {
         }
         switch (this.tok.getTipo()){
             case num:
+                n1 = new Numx (this.tok.getValor());
                 eat(Tipos.num);
-                n1 = new Numx(this.tok.getValor());
                 eat(Tipos.EQU);
-                eat(Tipos.num);
                 n2 = new Numx(this.tok.getValor());
+                eat(Tipos.num);
                 e = new ComparaNum(n1, n2);
                 break;
             case id:
-                eat(Tipos.id);
                 i1 = new Idx(this.tok.getValor());
-                eat(Tipos.EQU);
                 eat(Tipos.id);
+                eat(Tipos.EQU);
                 i2 = new Idx(this.tok.getValor());
+                eat(Tipos.id);
                 e = new ComparaId(i1, i2);
                 break;
             default:
